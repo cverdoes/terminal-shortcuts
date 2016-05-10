@@ -1,0 +1,23 @@
+{
+  "name": "terminal-shortcuts",
+  "version": "1.0.0",
+  "description": "Save time and keystrokes by defining shortcuts for often-visited paths when navigating folders in the terminal.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cverdoes/terminal-shortcuts.git"
+  },
+  "author": "Claes Verdoes <claes@cleverest.se>",
+  "license": "ISC",
+  "bin" : {
+    "lookup" : "./index.js",
+    "lookup-cd" : "./bin/go.bat"
+  },
+  "bugs": {
+    "url": "https://github.com/cverdoes/terminal-shortcuts/issues"
+  },
+  "homepage": "https://github.com/cverdoes/terminal-shortcuts#readme"
+}
