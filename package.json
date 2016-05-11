@@ -12,14 +12,19 @@
   },
   "author": "Claes Verdoes <claes@cleverest.se>",
   "license": "ISC",
-  "bin" : {
-    "ts-lookup" : "./index.js",
-    "ts" : "./bin/shortcut-cd.bat",
-    "ts-cd" : "./bin/shortcut-cd.sh",
-    "ts-pushd" : "./bin/shortcut-pushd.sh"
+  "bin": {
+    "ts-lookup": "./index.js",
+    "ts": "./bin/shortcut-cd.bat",
+    "ts-cd": "./bin/shortcut-cd.sh",
+    "ts-pushd": "./bin/shortcut-pushd.sh"
   },
   "bugs": {
     "url": "https://github.com/cverdoes/terminal-shortcuts/issues"
   },
-  "homepage": "https://github.com/cverdoes/terminal-shortcuts#readme"
+  "homepage": "https://github.com/cverdoes/terminal-shortcuts#readme",
+  "devDependencies": {
+    "grunt": "^1.0.1",
+    "grunt-contrib-jshint": "^1.0.0",
+    "grunt-jscs": "^2.8.0"
+  }
 }
