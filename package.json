@@ -13,8 +13,10 @@
   "author": "Claes Verdoes <claes@cleverest.se>",
   "license": "ISC",
   "bin" : {
-    "lookup" : "./index.js",
-    "lookup-cd" : "./bin/go.bat"
+    "ts-lookup" : "./index.js",
+    "ts" : "./bin/shortcut-cd.bat",
+    "ts-cd" : "./bin/shortcut-cd.sh",
+    "ts-pushd" : "./bin/shortcut-pushd.sh"
   },
   "bugs": {
     "url": "https://github.com/cverdoes/terminal-shortcuts/issues"
