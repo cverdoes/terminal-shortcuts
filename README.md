@@ -1,4 +1,4 @@
-# terminal-shortcuts
+# terminal-shortcuts [![Build Status](https://travis-ci.org/cverdoes/terminal-shortcuts.svg?branch=master)](https://travis-ci.org/cverdoes/terminal-shortcuts)
 > Save time and keystrokes by defining shortcuts for often-visited paths when navigating folders in the terminal.
 
 ```shell
