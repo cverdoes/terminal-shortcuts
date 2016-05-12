@@ -4,7 +4,7 @@
   "description": "Save time and keystrokes by defining shortcuts for often-visited paths when navigating folders in the terminal.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "grunt"
   },
   "repository": {
     "type": "git",
