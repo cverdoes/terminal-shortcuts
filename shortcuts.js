@@ -7,6 +7,7 @@
 	var path = require('path');
 
 	var RELATIVE_MARKER = path.sep + '*';
+	var SHORTCUT_TARGET_SEPARATOR = ':';
 	var SHORTCUTS_FILE = '.shortcuts';
 
 	var Shortcuts = function (shortcutsFilePath) {
@@ -31,6 +32,20 @@
 		// otherwise try to expand it using other shortcuts
 		return expand(cwd, this.shortcuts, target);
 	};
+
+	Shortcuts.prototype.add = function (newShortcut, newTarget) {
+		this.shortcuts[newShortcut] = newTarget;
+
+		// clear file
+		fs.closeSync(fs.openSync(this.shortcutsFilePath, 'w'));
+
+		// add all again
+		for (var shortcut in this.shortcuts) {
+			var target = this.shortcuts[shortcut];
+			var entry = [shortcut, target].join(SHORTCUT_TARGET_SEPARATOR);
+			fs.appendFileSync(this.shortcutsFilePath, entry + '\n');
+		}
+	}
 
 	function ensureFile(filepath) {
 		if (!pathExists(filepath)) {
@@ -71,6 +86,8 @@
 		var entries = readLines(shortcutsFilePath);
 
 		return entries.reduce(function (map, entry) {
+			if (entry.trim().length === 0) return map;
+
 			// entry is <shortcut>:<target>, target may contain additional ':'
 			var parts = entry.split(':');
 			var shortcut = parts[0];

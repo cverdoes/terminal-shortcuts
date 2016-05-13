@@ -14,11 +14,13 @@
 ```
 
 ## Getting Started
-The toolkit consists of two parts
+The toolkit consists of three parts
 
 1. the `ts-lookup` tool
 	- given a shortcut, this tool returns a target path
-2. batch and shell scripts
+2. the `ts-add` tool
+	- given a shortcut and a target, adds a shortcut to the shortcut file
+3. batch and shell scripts
 	- `ts` - batch script, acts like `cd` and changes directory to whatever the given shortcut expands to (windows only)
 	- `ts-cd` / `ts-pushd` - shell script wrappers for `cd` and `pushd`, though these can't be run directly (read more below)
 
@@ -28,10 +30,10 @@ Install them all globally:
 npm install terminal-shortcuts -g
 ```
 
-Create the shortcuts list, `.shortcuts`, in your home directory and add entries `shortcut:target`, one line per row, e.g.:
+Add some shortcuts:
 ```shell
-docs:/Users/user/Documents
-proj:/Users/user/Documents/projects
+> ts-add docs /Users/user/Documents
+> ts-add proj /Users/user/Documents/projects
 ```
 
 Test the setup in a terminal/console window: run `ts-lookup <shortcut>` and make sure it prints the corresponding target, e.g.:
@@ -80,6 +82,10 @@ Also:
 In lieu of a formal styleguide, take care to maintain the existing coding style. Add unit tests for any new or changed functionality. Lint and test your code using [Grunt](http://gruntjs.com/).
 
 ## Release History
+
+#### 1.1.0
+  * .shortcuts file now created if it doesn't exist
+  * added command `ts-add` to add shortcuts from the command line
 
 #### 1.0.0
   * Inital release

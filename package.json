@@ -14,6 +14,7 @@
   "license": "ISC",
   "bin": {
     "ts-lookup": "./index.js",
+    "ts-add" : "./add.js",
     "ts": "./bin/shortcut-cd.bat",
     "ts-cd": "./bin/shortcut-cd.sh",
     "ts-pushd": "./bin/shortcut-pushd.sh"
