@@ -22,19 +22,22 @@
 		}
 	}
 
+	function ensureFile(filepath) {
+		if (!pathExists(filepath)) {
+			fs.closeSync(fs.openSync(filepath, 'w'));
+		}
+	}
+
 	function readLines(filepath) {
 		try {
-			if (pathExists(filepath)) {
-				var fileContents = fs.readFileSync(filepath).toString();
+			ensureFile(filepath);
 
-				// handle both windows and linux line endings
-				return fileContents.split('\n').map(function (line) {
-					return line.trim();
-				});
-			} else {
-				console.error('No shortcuts file found (' + filepath + ')');
-				return [];
-			}
+			var fileContents = fs.readFileSync(filepath).toString();
+
+			// handle both windows and linux line endings
+			return fileContents.split('\n').map(function (line) {
+				return line.trim();
+			});
 		} catch (er) {
 			console.error('Failed to read shortcuts file (' + filepath + ')');
 			return [];
@@ -130,7 +133,7 @@
 
 	// load shortcuts file
 	var shortcutsFilePath = path.join(os.homedir(), SHORTCUTS_FILE);
-	var entries = readLines(shortcutsFilePath);
+	var entries = readLines(shortcutsFilePath, true);
 	var shortcuts = createShortcutMap(entries);
 
 	// process command line arguments sequentially to arrive at a final target path

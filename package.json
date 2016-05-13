@@ -1,6 +1,6 @@
 {
   "name": "terminal-shortcuts",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Save time and keystrokes by defining shortcuts for often-visited paths when navigating folders in the terminal.",
   "main": "index.js",
   "scripts": {
