@@ -41,11 +41,13 @@
 
 		// add all again
 		for (var shortcut in this.shortcuts) {
+			if (!this.shortcuts.hasOwnProperty(shortcut)) continue;
+
 			var target = this.shortcuts[shortcut];
 			var entry = [shortcut, target].join(SHORTCUT_TARGET_SEPARATOR);
 			fs.appendFileSync(this.shortcutsFilePath, entry + '\n');
 		}
-	}
+	};
 
 	function ensureFile(filepath) {
 		if (!pathExists(filepath)) {
