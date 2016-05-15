@@ -1,4 +1,4 @@
-/* globals module,require */
+/* globals exports,require */
 (function () {
 	'use strict';
 
@@ -35,19 +35,27 @@
 
 	Shortcuts.prototype.add = function (newShortcut, newTarget) {
 		this.shortcuts[newShortcut] = newTarget;
+		writeShortcuts(this.shortcutsFilePath, this.shortcuts);
+	};
 
+	Shortcuts.prototype.rm = function (shortcut) {
+		delete this.shortcuts[shortcut];
+		writeShortcuts(this.shortcutsFilePath, this.shortcuts);
+	};
+
+	function writeShortcuts(filepath, shortcuts) {
 		// clear file
-		fs.closeSync(fs.openSync(this.shortcutsFilePath, 'w'));
+		fs.closeSync(fs.openSync(filepath, 'w'));
 
 		// add all again
-		for (var shortcut in this.shortcuts) {
-			if (!this.shortcuts.hasOwnProperty(shortcut)) continue;
+		for (var shortcut in shortcuts) {
+			if (!shortcuts.hasOwnProperty(shortcut)) continue;
 
-			var target = this.shortcuts[shortcut];
+			var target = shortcuts[shortcut];
 			var entry = [shortcut, target].join(SHORTCUT_TARGET_SEPARATOR);
-			fs.appendFileSync(this.shortcutsFilePath, entry + '\n');
+			fs.appendFileSync(filepath, entry + '\n');
 		}
-	};
+	}
 
 	function ensureFile(filepath) {
 		if (!pathExists(filepath)) {
@@ -161,5 +169,8 @@
 		return expandRelative(cwd, expandedTarget);
 	}
 
-	module.exports = Shortcuts;
+	exports.load = function (filePath) {
+		return new Shortcuts(filePath);
+	};
+
 })();
