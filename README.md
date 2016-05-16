@@ -80,7 +80,6 @@ In lieu of a formal styleguide, take care to maintain the existing coding style.
 ## Release History
 
 #### 1.1.0
-	* .shortcuts file now created if it doesn't exist
 	* added command `ts-add` to add shortcuts from the command line
 	* added command `ts-rm` to remove shortcuts from the command line
 

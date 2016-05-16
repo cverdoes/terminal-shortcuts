@@ -57,15 +57,9 @@
 		}
 	}
 
-	function ensureFile(filepath) {
-		if (!pathExists(filepath)) {
-			fs.closeSync(fs.openSync(filepath, 'w'));
-		}
-	}
-
 	function readLines(filepath) {
 		try {
-			ensureFile(filepath);
+			if (!pathExists(filepath)) return [];
 
 			var fileContents = fs.readFileSync(filepath).toString();
 
