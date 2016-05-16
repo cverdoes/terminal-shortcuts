@@ -1,12 +1,19 @@
 /* globals exports, process, require */
 
-var Shortcuts = require('../shortcuts.js');
+var Shortcuts = require('../main/shortcuts.js');
 var path = require('path');
+var testPath = path.join('src', 'test');
+
+function tmpFile (index) {
+	'use strict';
+
+	return path.join(testPath, '.shortcuts-' + index + '.tmp');
+}
 
 exports.testNoShortcuts = function (test) {
 	'use strict';
 
-	var shortcuts = Shortcuts.load('test/.shortcuts-1.tmp');
+	var shortcuts = Shortcuts.load(tmpFile(1));
 
 	test.expect(1);
 	test.equals('bogus', shortcuts.lookup(process.cwd(), 'bogus'));
@@ -17,7 +24,7 @@ exports.testNoShortcuts = function (test) {
 exports.testAddShortcut = function (test) {
 	'use strict';
 
-	var shortcuts = Shortcuts.load('test/.shortcuts-2.tmp');
+	var shortcuts = Shortcuts.load(tmpFile(2));
 
 	test.expect(2);
 	test.equals('bogus', shortcuts.lookup(process.cwd(), 'bogus'));
@@ -33,7 +40,7 @@ exports.testAddShortcut = function (test) {
 exports.testRmShortcut = function (test) {
 	'use strict';
 
-	var shortcuts = Shortcuts.load('test/.shortcuts-3.tmp');
+	var shortcuts = Shortcuts.load(tmpFile(3));
 
 	test.expect(2);
 
@@ -51,7 +58,7 @@ exports.testRmShortcut = function (test) {
 exports.testExpansion = function (test) {
 	'use strict';
 
-	var shortcuts = Shortcuts.load('test/.shortcuts-4.tmp');
+	var shortcuts = Shortcuts.load(tmpFile(4));
 	var cwd = process.cwd();
 
 	test.expect(2);
@@ -64,8 +71,8 @@ exports.testExpansion = function (test) {
 	test.equals(part1 + part2, shortcuts.lookup(cwd, 'b'));
 
 	// make sure wildcard match against cwd works
-	shortcuts.add('c', path.join(cwd, '..', '*', 'test'));
-	test.equals(path.join(cwd, 'test'), shortcuts.lookup(cwd, 'c'));
+	shortcuts.add('c', path.join(cwd, '..', '*', 'src'));
+	test.equals(path.join(cwd, 'src'), shortcuts.lookup(cwd, 'c'));
 
 	test.done();
 };

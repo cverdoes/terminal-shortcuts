@@ -8,9 +8,9 @@ module.exports = function (grunt) {
 
 		pkg: grunt.file.readJSON('package.json'),
 
-		clean: ['test/*.tmp'],
+		clean: ['src/test/*.tmp'],
 
-		nodeunit: ['test/*.js'],
+		nodeunit: ['src/test/*.js'],
 
 		// Detect JavaScript errors and enforce coding conventions.
 		jshint: {
