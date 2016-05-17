@@ -1,34 +1,34 @@
 {
-	"name": "terminal-shortcuts",
-	"version": "1.0.0",
-	"description": "Save time and keystrokes by defining shortcuts for often-visited paths when navigating folders in the terminal.",
-	"main": "index.js",
-	"scripts": {
-		"test": "grunt"
-	},
-	"repository": {
-		"type": "git",
-		"url": "git+https://github.com/cverdoes/terminal-shortcuts.git"
-	},
-	"author": "Claes Verdoes <claes@cleverest.se>",
-	"license": "ISC",
-	"bin": {
-		"ts-lookup": "./src/main/index.js",
-		"ts-add": "./src/main/add.js",
-		"ts-rm": "./src/main/rm.js",
-		"ts": "./bin/shortcut-cd.bat",
-		"ts-cd": "./bin/shortcut-cd.sh",
-		"ts-pushd": "./bin/shortcut-pushd.sh"
-	},
-	"bugs": {
-		"url": "https://github.com/cverdoes/terminal-shortcuts/issues"
-	},
-	"homepage": "https://github.com/cverdoes/terminal-shortcuts#readme",
-	"devDependencies": {
-		"grunt": "^1.0.1",
-		"grunt-contrib-clean": "^1.0.0",
-		"grunt-contrib-jshint": "^1.0.0",
-		"grunt-contrib-nodeunit": "^1.0.0",
-		"grunt-jscs": "^2.8.0"
-	}
+  "name": "terminal-shortcuts",
+  "version": "1.1.0",
+  "description": "Save time and keystrokes by defining shortcuts for often-visited paths when navigating folders in the terminal.",
+  "main": "index.js",
+  "scripts": {
+    "test": "grunt"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cverdoes/terminal-shortcuts.git"
+  },
+  "author": "Claes Verdoes <claes@cleverest.se>",
+  "license": "ISC",
+  "bin": {
+    "ts-lookup": "./src/main/index.js",
+    "ts-add": "./src/main/add.js",
+    "ts-rm": "./src/main/rm.js",
+    "ts": "./bin/shortcut-cd.bat",
+    "ts-cd": "./bin/shortcut-cd.sh",
+    "ts-pushd": "./bin/shortcut-pushd.sh"
+  },
+  "bugs": {
+    "url": "https://github.com/cverdoes/terminal-shortcuts/issues"
+  },
+  "homepage": "https://github.com/cverdoes/terminal-shortcuts#readme",
+  "devDependencies": {
+    "grunt": "^1.0.1",
+    "grunt-contrib-clean": "^1.0.0",
+    "grunt-contrib-jshint": "^1.0.0",
+    "grunt-contrib-nodeunit": "^1.0.0",
+    "grunt-jscs": "^2.8.0"
+  }
 }
