@@ -2,15 +2,11 @@
 > Save time and keystrokes by defining shortcuts for often-visited paths when navigating folders in the terminal.
 
 ```shell
-# assuming the following shortcuts:
-#   docs:/Path/to/documents
-#   proj:/Path/to/projects
+~ $ ts-add proj /Users/me/Documents/projects
 
-/Some/random/path > ts docs
+~ $ ts proj
 
-/Path/to/documents > ts proj
-
-/Path/to/projects > _
+~/Documents/projects $
 ```
 
 ## Getting Started
@@ -18,8 +14,8 @@ The toolkit consists of three parts
 
 1. the `ts-lookup` tool
 	- given a shortcut, this tool returns a target path
-2. the `ts-add` tool
-	- given a shortcut and a target, adds a shortcut to the shortcut file
+2. the `ts-add` and `ts-rm` tools
+	- adds and removes shortcut to/from the shortcut file
 3. batch and shell scripts
 	- `ts` - batch script, acts like `cd` and changes directory to whatever the given shortcut expands to (windows only)
 	- `ts-cd` / `ts-pushd` - shell script wrappers for `cd` and `pushd`, though these can't be run directly (read more below)
@@ -32,16 +28,16 @@ npm install terminal-shortcuts -g
 
 Add some shortcuts:
 ```shell
-> ts-add docs /Users/user/Documents
-> ts-add proj /Users/user/Documents/projects
+$ ts-add docs /Users/user/Documents
+$ ts-add proj /Users/user/Documents/projects
 ```
 
 Test the setup in a terminal/console window: run `ts-lookup <shortcut>` and make sure it prints the corresponding target, e.g.:
 ```shell
-> ts-lookup docs
+$ ts-lookup docs
 /Users/user/Documents
 
-> ts-lookup proj
+$ ts-lookup proj
 /Users/user/Documents/projects
 
 ```
@@ -51,14 +47,14 @@ Because shell scripts run in a sub-shell when executed, they cannot change direc
 
 ```shell
 # create aliases
-/ > alias ts="source ts-cd"
-/ > alias tsp="source ts-pushd"
+$ alias ts="source ts-cd"
+$ alias tsp="source ts-pushd"
 
 # use alias to change directory using the ts-cd script:
-/ > ts proj
+$ ts proj
 
 # make sure we end up in the expected directory:
-/Users/user/Documents/project >
+/Users/user/Documents/project $
 ```
 
 If you use `bash`, add the aliases to `~/.bash_profile` to make them available in all shells. Also, feel free to use whatever aliases you like - I prefer `go` rather than `ts`, but I guess it might clash if you're programming with `go-lang`.
@@ -84,8 +80,8 @@ In lieu of a formal styleguide, take care to maintain the existing coding style.
 ## Release History
 
 #### 1.1.0
-  * .shortcuts file now created if it doesn't exist
-  * added command `ts-add` to add shortcuts from the command line
+	* added command `ts-add` to add shortcuts from the command line
+	* added command `ts-rm` to remove shortcuts from the command line
 
 #### 1.0.0
-  * Inital release
+	* Inital release
